@@ -12,6 +12,8 @@ using namespace std;
 
 int main(){//funcion principal
     int numeroingresado=1;
+
+    //1-2-5-7-8-11-12-14-15-17
     while(numeroingresado!=0){
         cout<<" Eliga el problema a solucionar: "<<endl;
         cout<<"1: Determina si el caracter ingresado es vocal/consonante/nada"<<endl;
