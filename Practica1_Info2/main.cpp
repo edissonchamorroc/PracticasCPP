@@ -23,7 +23,7 @@ int main(){//funcion principal
         cout<<"7: Serie Fibonacci"<<endl;
         cout<<"8: Suma los multiplos de a y b menores que c, siendo a,b y c numeros"<<endl;
         cout<<"9: Suma de todos los digitos elevados a si mismos"<<endl;
-        cout<<"11: Falta el 11"<<endl;
+        cout<<"11: Calcula el mcm de todos los numeros entre 1 y el numero ingresado"<<endl;
         cout<<"12: Maximo factor primo"<<endl;
         cout<<"14: Numero palindromo"<<endl;
         cout<<"15: suma de diagonal"<<endl;
@@ -179,58 +179,64 @@ int main(){//funcion principal
             cout<<"\nIngrese el numero c:";cin>>c;
             int *multiplosA = new int();
             int *multiplosB = new int();
-            bool banderaA=true,banderaSumaA=true;
-            bool banderaB=true,banderaSumaB=true;
+            bool banderaA=true;
+            bool banderaB=true,banderaDiferentes=true;
             int *i = new int{1};
             int *j= new int{1};
+            int *contadorA=new int{0};
+            int *contadorB=new int{0};
             int *suma = new int{0};
 
-            while(banderaA && banderaB){
+            while(banderaA){
 
                 if(*i*a<c){
 
                     *(multiplosA+(*i-1))=*i*a;
-
-                }if(*i*a>c){
+                    *contadorA+=1;
+                }if(*i*a>=c){
                     banderaA=false;
-                    banderaSumaA=false;
                 }
+                   *i+=1;
+            }
+
+            while(banderaB){
+
                 if(*j*b<c){
-                    *(multiplosB+(*j-1))=*j*b;
+                    for(int i=0;i<*contadorA;i++){
+                        if(*(multiplosA+i)==*j*b){
+                            banderaDiferentes=false;
+                        }
+                    }
 
-                }if(*j*b>c){
+                    if(banderaDiferentes){
+                        *(multiplosB+(*j-1))=*j*b;
+                        *contadorB+=1;
+
+                    }
+                    banderaDiferentes=true;
+
+                }
+                if(*j*b>=c){
                     banderaB=false;
-                    banderaSumaB=false;
                 }
-                if(*(multiplosA+(*i-1))!=*(multiplosB+(*j-1))){
-
-                    if(banderaSumaA){
-                        *suma+=*(multiplosA+(*i-1));
-                        cout<<"suma a " << *suma <<endl;
-                    }if(banderaSumaB){
-                        *suma+=*(multiplosB+(*j-1));
-                        cout<<"suma b " << *suma <<endl;
-                    }
-
-
-                }else{
-                    if(banderaSumaA){
-                        *suma+=*(multiplosA+(*i-1));
-                    }else if(banderaSumaB){
-                        *suma+=*(multiplosB+(*j-1));
-                    }
-                    cout<<"suma cuando son iguales " << *suma <<endl;
-                }
-                *i+=1;
                 *j+=1;
+            }
 
+            for(int i=0;i<*contadorA;i++){
+                *suma+=*(multiplosA+i);
+                cout<<*(multiplosA+i)<<" + ";
+            }
+
+            for(int i=0;i<*contadorB;i++){
+                *suma+=*(multiplosB+i);
+                cout<<*(multiplosB+i)<<" + ";
             }
 
 
-            cout<< "la suma de los multiplos de a: "<< a <<" y de b: "<< b << ", menores que c: "<<c<< " es: " << *suma<<endl;
+            cout<< "= " << *suma<<endl;
             delete multiplosA;
             delete multiplosB;
-            delete i;delete j;delete suma;
+            delete i;delete j;delete suma;delete contadorA; delete contadorB;
             break;
         }
         case 9:{
@@ -264,6 +270,9 @@ int main(){//funcion principal
             }
 
             cout<<"El resultado de la suma es: "<<sumatotal<<"\n";
+            break;
+        }
+        case 11:{
             break;
         }
         case 12:{
