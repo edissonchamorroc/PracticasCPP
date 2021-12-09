@@ -13,15 +13,17 @@ using namespace std;
 int main(){//funcion principal
     int numeroingresado=1;
 
-    //1-2-5-7-8-11-12-14-15-17
+    //8-11
     while(numeroingresado!=0){
-        cout<<" Eliga el problema a solucionar: "<<endl;
-        cout<<"1: Determina si el caracter ingresado es vocal/consonante/nada"<<endl;
+        cout<<" Eliga la opcion: "<<endl;
+        cout<<"1: Determina si el caracter ingresado es vocal/consonante/o ninguno de los anterioes"<<endl;
         cout<<"2: Minima combinacion de billetes"<<endl;
         cout<<"4: Conversion de numero a formato de hora"<<endl;
         cout<<"5: Patron rombo en pantalla"<<endl;
         cout<<"7: Serie Fibonacci"<<endl;
+        cout<<"8: Suma los multiplos de a y b menores que c, siendo a,b y c numeros"<<endl;
         cout<<"9: Suma de todos los digitos elevados a si mismos"<<endl;
+        cout<<"11: Falta el 11"<<endl;
         cout<<"12: Maximo factor primo"<<endl;
         cout<<"14: Numero palindromo"<<endl;
         cout<<"15: suma de diagonal"<<endl;
@@ -107,16 +109,16 @@ int main(){//funcion principal
                 if(min1 >=60){
                     hora1_1++;
                     min1-=60;
-                 }
-                if(hora1_1>=24){
-                        dia+=1;
-                        hora1_1-=24;
-                    }
-                    cout<<"\n Hora final: "<<dia<<" dia(s) "<<hora1_1<<":"<<min1<<endl;
                 }
+                if(hora1_1>=24){
+                    dia+=1;
+                    hora1_1-=24;
+                }
+                cout<<"\n Hora final: "<<dia<<" dia(s) "<<hora1_1<<":"<<min1<<endl;
+            }
 
             else{
-               cout<<" El numero ingresado no corresponde a una hora valida"<<endl;
+                cout<<" El numero ingresado no corresponde a una hora valida"<<endl;
             }
 
             break;
@@ -168,6 +170,67 @@ int main(){//funcion principal
                 }
             }
             cout<<"\n el resultado de la suma es: "<<suma<<"\n";
+            break;
+        }
+        case 8:{
+            int a=0,b=0,c=0;
+            cout<<"\nIngrese el numero a:";cin>>a;
+            cout<<"\nIngrese el numero b:";cin>>b;
+            cout<<"\nIngrese el numero c:";cin>>c;
+            int *multiplosA = new int();
+            int *multiplosB = new int();
+            bool banderaA=true,banderaSumaA=true;
+            bool banderaB=true,banderaSumaB=true;
+            int *i = new int{1};
+            int *j= new int{1};
+            int *suma = new int{0};
+
+            while(banderaA && banderaB){
+
+                if(*i*a<c){
+
+                    *(multiplosA+(*i-1))=*i*a;
+
+                }if(*i*a>c){
+                    banderaA=false;
+                    banderaSumaA=false;
+                }
+                if(*j*b<c){
+                    *(multiplosB+(*j-1))=*j*b;
+
+                }if(*j*b>c){
+                    banderaB=false;
+                    banderaSumaB=false;
+                }
+                if(*(multiplosA+(*i-1))!=*(multiplosB+(*j-1))){
+
+                    if(banderaSumaA){
+                        *suma+=*(multiplosA+(*i-1));
+                        cout<<"suma a " << *suma <<endl;
+                    }if(banderaSumaB){
+                        *suma+=*(multiplosB+(*j-1));
+                        cout<<"suma b " << *suma <<endl;
+                    }
+
+
+                }else{
+                    if(banderaSumaA){
+                        *suma+=*(multiplosA+(*i-1));
+                    }else if(banderaSumaB){
+                        *suma+=*(multiplosB+(*j-1));
+                    }
+                    cout<<"suma cuando son iguales " << *suma <<endl;
+                }
+                *i+=1;
+                *j+=1;
+
+            }
+
+
+            cout<< "la suma de los multiplos de a: "<< a <<" y de b: "<< b << ", menores que c: "<<c<< " es: " << *suma<<endl;
+            delete multiplosA;
+            delete multiplosB;
+            delete i;delete j;delete suma;
             break;
         }
         case 9:{
@@ -230,10 +293,10 @@ int main(){//funcion principal
             }
             NumMFP=*MFP;
             for(int i=0;i<sizeof(MFP)-1;i++){
-               int b=*(MFP+i);
-               if(NumMFP<b){
+                int b=*(MFP+i);
+                if(NumMFP<b){
                     NumMFP=*(MFP+i);
-               }
+                }
 
             }
             delete [] MFP;
@@ -277,7 +340,7 @@ int main(){//funcion principal
             for(int i=0;;i+=2){//diagonal 1
                 pos1+=i;
                 if(pos1<tamM*tamM){
-                   sumM+=*(Matriz+pos1);
+                    sumM+=*(Matriz+pos1);
 
                 }
                 else{break;}
