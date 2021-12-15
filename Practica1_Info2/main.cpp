@@ -273,6 +273,25 @@ int main(){//funcion principal
             break;
         }
         case 11:{
+            int numeroFinal=0,j=1;
+            int resultMcm;
+            bool banderaMcm=true;
+            cout << "Ingrese el numero hasta el cual se desea determinar el mcm:";
+            cin>>numeroFinal;
+            do{
+                resultMcm=numeroFinal*j;
+                for(int i=1;i<=numeroFinal;i++){
+                    if(numeroFinal*j%i!=0){
+                        break;
+                    }
+                    if(i==numeroFinal){
+                        banderaMcm=false;
+                    }
+                }
+                j++;
+            }while(banderaMcm);
+
+            cout << "El minimo comun multiplo es: "<< resultMcm<<endl;
             break;
         }
         case 12:{
