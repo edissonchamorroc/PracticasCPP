@@ -13,7 +13,6 @@ using namespace std;
 int main(){//funcion principal
     int numeroingresado=1;
 
-    //11
     while(numeroingresado!=0){
         cout<<" Eliga la opcion: "<<endl;
         cout<<"1: Determina si el caracter ingresado es vocal/consonante/o ninguno de los anterioes"<<endl;
