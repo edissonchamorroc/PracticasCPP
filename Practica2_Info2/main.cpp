@@ -56,12 +56,15 @@ void imprimirMatrizChar(char ** );
 bool disponibilidadAsiento(int fila, int columna, char **matriz);
 void reservaCancelaAsientoCine(int fila,int columna,char **matriz);
 int filaLetra2Numero(char );
+int * generarRectangulo();
+bool intercepcionRectangulosEjeX(int *rectangulo1,int *rectangulo2);
+int * generarItercepcion(int * rectangulo1,int * rectangulo2);
 
 int main(){
     int problema=1;
     while(problema!=0){
         //puntos 1-2-3-5-6-7-10-12-13-16
-        //faltan 9,11,15
+        //faltan 15
         cout<<"\nSolucion de practica de laboratorio N2 de Informatica "
               "2\n*******************************************************************************\n";
         cout<<"\nIngrese nuemero del ejercicio que quiera resolver:"
@@ -78,7 +81,7 @@ int main(){
               "\n11: Simulador de asientos de sala cine"
               "\n12:Programa que determina un cuadrado magico"
               "\n13: Determina cuantas estrellas hay en una matriz"
-              "\n15:Falta punto 15"
+              "\n15: Interseccion entre rectangulos"
               "\n16: Programa que determinar cuantos caminos posibles hay"
               "\n\nSi requiere salir del programa ingrese el numero cero:\n";
         cin>>problema;
@@ -241,7 +244,8 @@ int main(){
             break;
         }
         case 15:{
-
+            int *rectangulo1= new int[4];
+            int *rectangulo2= new int[4];
             break;
         }
         case 16:{
@@ -710,6 +714,51 @@ void starts(int **pM)
 
     }
     cout<<"\n Estrellas en la matriz: "<<estrellas<<endl;
+}
+//********************* funciones para el problema 15****************
+int * generarRectangulo(){
+    int rectangulo[4];
+    int posx,posy,ancho,alto;
+    cout<<"Ingrese la posicion x del rectangulo: ";
+    cin>>posx;rectangulo[0]=posx;
+    cout<<"Ingrese la posicion y del rectangulo: ";
+    cin>>posy; rectangulo[1]=posy;
+    cout<<"Ingrese el ancho del rectangulo: ";
+    cin>>ancho; rectangulo[2]=ancho;
+    cout<<"Ingrese la altura del rectangulo: ";
+    cin>>alto;rectangulo[3]=alto;
+
+    return rectangulo;
+}
+bool intercepcionRectangulosEjeX(int *rectangulo1,int *rectangulo2){
+    bool esInterceptado=false;
+    if(*(rectangulo2+0)>=*(rectangulo1+0) && *(rectangulo2+0)<=(*(rectangulo1+0) + *(rectangulo1+3))){//Derecha
+        esInterceptado=true;
+    }
+    if((*(rectangulo2+0) + *(rectangulo2+3))>=*(rectangulo1+0) && (*(rectangulo2+0) + *(rectangulo2+3))<=(*(rectangulo1+0) + *(rectangulo1+3))){//Izquierda
+         esInterceptado=true;
+    }
+    return esInterceptado;
+}
+bool intercepcionRectangulosEjeY(int *rectangulo1,int *rectangulo2){
+    bool esInterceptado=false;
+    if(*(rectangulo2+1)>=(*(rectangulo1+1) + *(rectangulo1+2)) && *(rectangulo2+1)<=*(rectangulo1+0)){//Abajo
+        esInterceptado=true;
+    }
+    if((*(rectangulo2+1) + *(rectangulo2+2))<=*(rectangulo1+0) && (*(rectangulo2+1) + *(rectangulo2+2))<=(*(rectangulo1+1) + *(rectangulo1+2))){//Izquierda
+         esInterceptado=true;
+    }
+    return esInterceptado;
+}
+int * generarItercepcion(int * rectangulo1,int * rectangulo2){
+    int * intercepcion = new int[4];
+    intercepcion={0};
+    if(intercepcionRectangulosEjeX(rectangulo1,rectangulo2) && intercepcionRectangulosEjeY(rectangulo1,rectangulo2)){
+        cout<< "Hay intercepcion";
+    }else{
+        cout<< "No Hay intercepcion";
+    }
+    return intercepcion;
 }
 //********************** funcion para el problema 16******************
 unsigned long long int factorial(int tamanomatriz){
