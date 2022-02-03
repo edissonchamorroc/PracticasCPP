@@ -1,18 +1,18 @@
 // C++ code
 //
 int POT_INPUT = 0;
-int LED_OUPUT= 11;
+int LED_OUTPUT= 11;
 float valuePot;
 void setup()
 {
   Serial.begin(9600);
   pinMode(POT_INPUT, INPUT);
-  pinMode(LED_OUPUT, OUTPUT);
+  pinMode(LED_OUTPUT, OUTPUT);
 }
 
 void loop()
 {
   valuePot=analogRead(POT_INPUT);
-  analogWrite(LED_OUPUT,(valuePot/1018)*5);
-  Serial.println((valuePot/1018)*5);
+  analogWrite(LED_OUTPUT,(valuePot));
+  Serial.println(analogRead(LED_OUTPUT));
 }
