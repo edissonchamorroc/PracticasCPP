@@ -63,7 +63,8 @@ int * generarItercepcion(int * rectangulo1,int * rectangulo2);
 int main(){
     int problema=1;
     while(problema!=0){
-        //puntos 1-2-3-5-6-7-10-12-13-16
+
+        //puntos a evaluar 2,4,5,6, 8, 9, 11,13,15,16
         //faltan 15
         cout<<"\nSolucion de practica de laboratorio N2 de Informatica "
               "2\n*******************************************************************************\n";
