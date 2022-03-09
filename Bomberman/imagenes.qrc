@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>imagenes/murodinamico.png</file>
+        <file>imagenes/muroestatico.PNG</file>
+        <file>imagenes/bomberman.png</file>
+        <file>imagenes/bomb.png</file>
+        <file>imagenes/fire.png</file>
+    </qresource>
+</RCC>
