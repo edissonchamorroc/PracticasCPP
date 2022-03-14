@@ -31,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
     scene->addItem(bomberman);
 
     ui->labelLifes->setText(utilidades::conversionInt2Str(bomberman->getVidas()));
+
     ui->labelScore->setText(utilidades::conversionInt2Str(puntaje));
 
     tiempoJuego = new QTimer();
@@ -77,17 +78,17 @@ void MainWindow::keyPressEvent(QKeyEvent *evento){
     }
     else if(evento->key()==Qt::Key_F && bomba==nullptr && fuegos.size()==0){
 
-       bomba = new Bomba(bomberman->getPosx(),bomberman->getPosy());
+        bomba = new Bomba(bomberman->getPosx(),bomberman->getPosy());
 
         scene->addItem(bomba);
 
         tiempoExplosion = new QTimer();tiempoFuego=new QTimer();
 
-        tiempoExplosion->start(5000);tiempoFuego->start(10000);
+        tiempoExplosion->start(5000);tiempoFuego->start(8000);
 
         connect(tiempoExplosion,&QTimer::timeout,this,&MainWindow::explosion);
 
-        connect(tiempoFuego,&QTimer::timeout,this,&MainWindow::explosion);
+        connect(tiempoFuego,&QTimer::timeout,this,&MainWindow::temporizadorLLamas);
 
     }
 }
@@ -115,6 +116,19 @@ bool MainWindow::evaluarBombermanColisionMuroDinamico()
         }
     }
     return colision;
+}
+
+void MainWindow::evaluarBombermanFuego()
+{
+    QList<fuego*>::iterator ite=fuegos.begin();
+    for(ite=fuegos.begin();ite!=fuegos.end();ite++){
+        if(bomberman->collidesWithItem(*ite)){
+            bomberman->setVidas(bomberman->getVidas()-1);
+            ui->labelLifes->setText(utilidades::conversionInt2Str(bomberman->getVidas()));
+            bomberman->setPosx(74);bomberman->setPosy(74);
+            break;
+        }
+    }
 }
 
 void MainWindow::evaluarFuegoColisionMuroEstatico()
@@ -169,6 +183,7 @@ void MainWindow::explosion(){
 
 
     fuegos=fire->creacionExplosion(bomba->getPosx(),bomba->getPosy());
+    evaluarBombermanFuego();
     evaluarFuegoColisionMuroEstatico();
     evaluarFuegoColisionMuroDinamico();
     tiempoExplosion->deleteLater();

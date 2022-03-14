@@ -35,6 +35,10 @@ public:
     int getVidas() ;
     void setVidas(int newVidas);
 
+    void setPosx(int newPosx);
+
+    void setPosy(int newPosy);
+
 signals:
 public slots:
     void actualizacion();

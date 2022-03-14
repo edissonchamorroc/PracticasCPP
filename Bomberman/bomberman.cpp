@@ -21,6 +21,16 @@ void BomberMan::setVidas(int newVidas)
     vidas = newVidas;
 }
 
+void BomberMan::setPosx(int newPosx)
+{
+    posx = newPosx;
+}
+
+void BomberMan::setPosy(int newPosy)
+{
+    posy = newPosy;
+}
+
 BomberMan::BomberMan()
 {
 

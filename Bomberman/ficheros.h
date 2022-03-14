@@ -17,6 +17,8 @@ public:
     ficheros();
 
     void lecturaFichero(string nombreFichero, QGraphicsScene *scene, QList<muroEstatico*> &murosEstaticos,QList<MuroDinamico*> &murosDinamicos);
+    int getPosx();
+    int getPosy();
 
 
 };

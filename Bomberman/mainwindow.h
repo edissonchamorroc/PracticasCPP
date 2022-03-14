@@ -49,6 +49,7 @@ private:
     void keyPressEvent(QKeyEvent *evento);
     bool evaluarBombermanColisionMuroEstatico();
     bool evaluarBombermanColisionMuroDinamico();
+    void evaluarBombermanFuego();
     void evaluarFuegoColisionMuroEstatico();
     void evaluarFuegoColisionMuroDinamico();
 
