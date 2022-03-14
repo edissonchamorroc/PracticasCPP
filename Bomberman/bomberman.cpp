@@ -2,14 +2,23 @@
 
 
 
-int BomberMan::getPosx() const
+int BomberMan::getPosx()
 {
     return posx;
 }
 
-int BomberMan::getPosy() const
-{
+int BomberMan::getPosy() {
     return posy;
+}
+
+int BomberMan::getVidas()
+{
+    return vidas;
+}
+
+void BomberMan::setVidas(int newVidas)
+{
+    vidas = newVidas;
 }
 
 BomberMan::BomberMan()

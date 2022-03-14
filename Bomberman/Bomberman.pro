@@ -11,19 +11,25 @@ CONFIG += c++11
 SOURCES += \
     bomba.cpp \
     bomberman.cpp \
+    ficheros.cpp \
+    fuego.cpp \
     llave.cpp \
     main.cpp \
     mainwindow.cpp \
     muroDinamico.cpp \
-    muroestatico.cpp
+    muroestatico.cpp \
+    utilidades.cpp
 
 HEADERS += \
     bomba.h \
     bomberman.h \
+    ficheros.h \
+    fuego.h \
     llave.h \
     mainwindow.h \
     muroDinamico.h \
-    muroestatico.h
+    muroestatico.h \
+    utilidades.h
 
 FORMS += \
     mainwindow.ui

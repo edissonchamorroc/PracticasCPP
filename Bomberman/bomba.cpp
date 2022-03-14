@@ -1,5 +1,15 @@
 #include "bomba.h"
 
+int Bomba::getPosx()
+{
+    return posx;
+}
+
+int Bomba::getPosy()
+{
+    return posy;
+}
+
 Bomba::Bomba()
 {
 

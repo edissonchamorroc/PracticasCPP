@@ -6,10 +6,13 @@
 #include<muroestatico.h>
 #include<muroDinamico.h>
 #include<bomberman.h>
+#include<fuego.h>
 #include<string>
 #include<fstream>
 #include<QKeyEvent>
 #include<bomba.h>
+#include<QTimer>
+#include<ficheros.h>
 using namespace std;
 
 QT_BEGIN_NAMESPACE
@@ -24,22 +27,35 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     ifstream lector;
+    int puntaje=0,tiempo=174;
+
+
 public slots:
 
 private:
     QGraphicsScene *scene;
     Ui::MainWindow *ui;
-    muroEstatico * muro;
+
     QList<muroEstatico *> murosEstaticos;
     QList<MuroDinamico *> murosDinamicos;
+    ficheros *fichero;
     BomberMan *bomberman;
-    Bomba *bomba;
+    QList<fuego *> fuegos;
+    fuego * fire;
+    Bomba *bomba=nullptr;
+    QTimer *tiempoExplosion,*tiempoFuego,*tiempoJuego;
+
 
     void keyPressEvent(QKeyEvent *evento);
-    void lecturaFichero(string nombreFichero);
-    int contadorDigitos(string numero);
-    int conversionStr2Int(string numero);
-    bool evaluarBombermanColisionMuroEstatico(QList<muroEstatico*>::iterator &ite);
-    bool evaluarBombermanColisionMuroDinamico(QList<MuroDinamico*>::iterator &ite);
+    bool evaluarBombermanColisionMuroEstatico();
+    bool evaluarBombermanColisionMuroDinamico();
+    void evaluarFuegoColisionMuroEstatico();
+    void evaluarFuegoColisionMuroDinamico();
+
+signals:
+public slots:
+    void explosion();
+    void temporizadorLLamas();
+    void temporizadorJuego();
 };
 #endif // MAINWINDOW_H

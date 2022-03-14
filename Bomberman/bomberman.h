@@ -11,7 +11,7 @@
 using namespace std;
 class BomberMan: public QGraphicsItem,public QObject
 {
-    int posx,posy,ancho,alto,velocidad=4;
+    int posx,posy,ancho,alto,velocidad=4,vidas=4;
 public:
     BomberMan();
     BomberMan(int posx,int posy);
@@ -28,9 +28,12 @@ public:
     void MoveUp();
     void MoveDown();
 
-    int getPosx() const;
+    int getPosx() ;
 
-    int getPosy() const;
+    int getPosy() ;
+
+    int getVidas() ;
+    void setVidas(int newVidas);
 
 signals:
 public slots:

@@ -3,8 +3,9 @@
 
 #include<QGraphicsItem>
 #include<QPainter>
+#include<QObject>
 
-class muroEstatico:public QGraphicsItem
+class muroEstatico:public QGraphicsItem,public QObject
 {
     int posx,posy,ancho,alto;
     QImage *imagen;

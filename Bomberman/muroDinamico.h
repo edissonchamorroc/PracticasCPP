@@ -2,8 +2,8 @@
 #define MURODINAMICO_H
 #include<QGraphicsItem>
 #include<QPainter>
-
-class MuroDinamico: public QGraphicsItem
+#include<QObject>
+class MuroDinamico: public QGraphicsItem,public QObject
 {
      int posx,posy,ancho,alto;
      QImage *imagen;
