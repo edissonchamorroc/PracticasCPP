@@ -1,6 +1,16 @@
 #include "ficheros.h"
 
 
+int ficheros::getPosx() const
+{
+    return posx;
+}
+
+int ficheros::getPosy() const
+{
+    return posy;
+}
+
 ficheros::ficheros()
 {
 
@@ -43,5 +53,35 @@ void ficheros::lecturaFichero(string nombreFichero, QGraphicsScene *scene,QList<
     }
     lector.close();
 }
+
+void ficheros::setPosiciones()
+{
+    ifstream lector;
+    lector.open("murosDinamicos.txt");
+    string leido;
+    int contadorColumnas=0,contadorFilas=0;
+    int aleatorio=rand()%(63);
+    if(!lector.fail()){
+
+        while(!lector.eof()){
+            lector>>leido;
+            if(contadorFilas==aleatorio){
+            this->posx=utilidades::conversionStr2Int(leido);
+            lector>>leido;
+            this->posy=utilidades::conversionStr2Int(leido);
+            break;
+            }
+            else if(contadorColumnas==3){
+                contadorColumnas=0;
+                contadorFilas++;
+            }
+            else{
+                contadorColumnas++;
+            }
+        }
+    }
+    lector.close();
+}
+
 
 

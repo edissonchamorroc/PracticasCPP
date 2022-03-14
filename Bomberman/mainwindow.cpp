@@ -205,7 +205,11 @@ void MainWindow::temporizadorLLamas()
 
 void MainWindow::temporizadorJuego()
 {
-    tiempo--;
-    ui->labelTime->setText(utilidades::conversionInt2Str(tiempo));
+    if(tiempo==0){
+        delete this;
+    }else{
+        tiempo--;
+        ui->labelTime->setText(utilidades::conversionInt2Str(tiempo));
+    }
 
 }
