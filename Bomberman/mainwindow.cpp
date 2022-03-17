@@ -22,6 +22,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     scene->setBackgroundBrush(Qt::green);
 
+    llave =new Llave(fichero->getPosx(),fichero->getPosy());
+
+    scene->addItem(llave);
+
     fichero->lecturaFichero("murosEstaticos.txt",scene,murosEstaticos,murosDinamicos);
 
     fichero->lecturaFichero("murosDinamicos.txt",scene,murosEstaticos,murosDinamicos);

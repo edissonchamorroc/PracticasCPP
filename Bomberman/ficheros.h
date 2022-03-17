@@ -12,15 +12,17 @@ using namespace std;
 class ficheros
 {
 
-    string posiciones;
+    int posiciones, posx,posy;
 public:
     ficheros();
 
     void lecturaFichero(string nombreFichero, QGraphicsScene *scene, QList<muroEstatico*> &murosEstaticos,QList<MuroDinamico*> &murosDinamicos);
-    int []getPosiciones();
+    void setPosiciones();
 
 
 
+    int getPosx() const;
+    int getPosy() const;
 };
 
 #endif // FICHEROS_H

@@ -14,6 +14,7 @@ Llave::Llave()
 {
 
 }
+
 Llave::Llave(int posx, int posy)
 {
     this->posx=posx;
@@ -22,7 +23,7 @@ Llave::Llave(int posx, int posy)
 
     setPos(posx,posy);
 
-    imagen=new QImage(":/imagenes/fire.png");
+    imagen=new QImage(":/imagenes/puerta.png");
 }
 
 QRectF Llave::boundingRect() const

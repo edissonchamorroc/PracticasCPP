@@ -12,7 +12,6 @@ class Llave:public QObject,public QGraphicsItem
 
 public:
     Llave();
-
     Llave(int posx,int posy);
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);

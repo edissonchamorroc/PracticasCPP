@@ -13,7 +13,7 @@ int ficheros::getPosy() const
 
 ficheros::ficheros()
 {
-
+ setPosiciones();
 }
 
 void ficheros::lecturaFichero(string nombreFichero, QGraphicsScene *scene,QList<muroEstatico*> &murosEstaticos,QList<MuroDinamico*> &murosDinamicos)
@@ -59,27 +59,30 @@ void ficheros::setPosiciones()
     ifstream lector;
     lector.open("murosDinamicos.txt");
     string leido;
-    int contadorColumnas=0,contadorFilas=0;
-    int aleatorio=rand()%(63);
+    int posicion[4],contador=0,contadorF=0,numAleatorio=rand()%(63);
     if(!lector.fail()){
 
         while(!lector.eof()){
+
             lector>>leido;
-            if(contadorFilas==aleatorio){
-            this->posx=utilidades::conversionStr2Int(leido);
-            lector>>leido;
-            this->posy=utilidades::conversionStr2Int(leido);
-            break;
+            posicion[contador]=utilidades::conversionStr2Int(leido);
+            contador++;
+
+            if(contador==4 && contadorF==numAleatorio){
+                this->posx=posicion[0];
+                this->posx=posicion[1];
+                break;
             }
-            else if(contadorColumnas==3){
-                contadorColumnas=0;
-                contadorFilas++;
+            else if(contador==4 && contadorF!=numAleatorio){
+                posicion[0]=0;posicion[1]=0;posicion[2]=0;posicion[3]=0;
+                contadorF++;
+                contador=0;
             }
-            else{
-                contadorColumnas++;
-            }
+
         }
+
     }
+
     lector.close();
 }
 

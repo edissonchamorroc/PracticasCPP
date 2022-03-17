@@ -5,5 +5,6 @@
         <file>imagenes/bomberman.png</file>
         <file>imagenes/bomb.png</file>
         <file>imagenes/fire.png</file>
+        <file>imagenes/puerta.PNG</file>
     </qresource>
 </RCC>

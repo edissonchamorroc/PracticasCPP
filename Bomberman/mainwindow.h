@@ -13,6 +13,7 @@
 #include<bomba.h>
 #include<QTimer>
 #include<ficheros.h>
+#include<llave.h>
 using namespace std;
 
 QT_BEGIN_NAMESPACE
@@ -27,7 +28,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     ifstream lector;
-    int puntaje=0,tiempo=174;
+    int puntaje=0,tiempo=200;
 
 
 public slots:
@@ -38,10 +39,11 @@ private:
 
     QList<muroEstatico *> murosEstaticos;
     QList<MuroDinamico *> murosDinamicos;
-    ficheros *fichero;
+    ficheros *fichero = new ficheros();
     BomberMan *bomberman;
     QList<fuego *> fuegos;
     fuego * fire;
+    Llave *llave;
     Bomba *bomba=nullptr;
     QTimer *tiempoExplosion,*tiempoFuego,*tiempoJuego;
 
