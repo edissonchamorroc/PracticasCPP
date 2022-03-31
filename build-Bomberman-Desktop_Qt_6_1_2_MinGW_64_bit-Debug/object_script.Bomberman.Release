@@ -1,0 +1,12 @@
+release/bomba.o
+release/bomberman.o
+release/ficheros.o
+release/fuego.o
+release/llave.o
+release/main.o
+release/mainwindow.o
+release/muroDinamico.o
+release/muroestatico.o
+release/utilidades.o
+release/qrc_imagenes.o
+release/moc_mainwindow.o

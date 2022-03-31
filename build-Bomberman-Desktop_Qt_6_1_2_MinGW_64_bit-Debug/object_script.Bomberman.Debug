@@ -1,0 +1,12 @@
+debug/bomba.o
+debug/bomberman.o
+debug/ficheros.o
+debug/fuego.o
+debug/llave.o
+debug/main.o
+debug/mainwindow.o
+debug/muroDinamico.o
+debug/muroestatico.o
+debug/utilidades.o
+debug/qrc_imagenes.o
+debug/moc_mainwindow.o

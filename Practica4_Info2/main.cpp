@@ -185,6 +185,7 @@ void modificacion(red &Redes){
             if(Redes.buscarEnrutador(nodoSecundario)){
 
                 Redes.modificarEnlaces(nodoPrincipal,nodoSecundario,costoEnlace);
+
                 Redes.modificarEnlaces(nodoSecundario,nodoPrincipal,costoEnlace);
 
             }

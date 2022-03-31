@@ -52,7 +52,7 @@ int main()
                     if(caracter!=0)textoleido+=caracter;
                     caracter={0};//limpio variable
                 }
-                binario=char2bin(textoleido);
+                binario=char2bin(textoleido);//utilizo funcion char2bin
                 //escritor.close();
                 lector.close();
                 cout<<"\nTexto obtenido: \n";
@@ -201,6 +201,7 @@ int main()
                                 }
                                 if(bandera==true){
                                     lectoradm.close();
+                                    escritoradm<<endl;
                                     cout<<"\nIngrese contrasena: ";
                                     cin>>clave;
                                     cout<<"\nIngrese Saldo: ";
@@ -213,7 +214,9 @@ int main()
                                 lectoradm.close();
                                 bandera=true;
                             }
-                            escritoradm.close();break;}
+                            escritoradm.close();
+                            break;
+                        }
                         //------------------------------------------------------------------
                         else if(opadmin==2) {//Inicio de la opcion 2 eliminar usuario
                             bool bandera=true;
@@ -511,7 +514,7 @@ string char2bin(string textoleido){//funcion correcta conversion a binario
 
 void codificacion1(string binario,string &codificado,int semilla){
     int count1=0,count0=0,ini=0,incremento=0;
-    int tamanotexto=binario.size();
+    //int tamanotexto=binario.size();
     codificado=binario;
 
     for(int i=0;i<semilla;i++)//cambio en el primer bloque
@@ -561,8 +564,8 @@ void codificacion2(string binario,string &codificado,int semilla){
         {
             if(i < binario.size() - 2)
             {
-                codificado[i]=binario[semilla+i-1];
-                for(int j=0;j<semilla-1;j++)//guardo de ultimo a primero
+                codificado[i]=binario[semilla+i-1];//ultimo a primero
+                for(int j=0;j<semilla-1;j++)//recorro bits
                 {
                     codificado[j+i+1]=binario[j+i];
                 }
@@ -580,7 +583,7 @@ void codificacion2(string binario,string &codificado,int semilla){
         {
 
             codificado[i]=binario[semilla+i-1];
-            for(int j=0;j<semilla-1;j++)//guardo de ultimo a primero
+            for(int j=0;j<semilla-1;j++)//recorro bits
             {
                 codificado[j+i+1]=binario[j+i];
             }
@@ -591,7 +594,7 @@ void codificacion2(string binario,string &codificado,int semilla){
 
 //---------------------------------------
 void decodificacion1(string binario,string &codificado,int semilla){
-    int count1=0,count0=0,ini=0,incremento=0,potencia=128;;
+    int count1=0,count0=0,ini=0,incremento=0,potencia=128;
     int decodificado=0;string deco;
     codificado=binario;
 
