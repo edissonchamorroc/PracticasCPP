@@ -2,7 +2,8 @@
 #define CUERPO_H
 #include<math.h>
 class cuerpo
-{   float PX;
+{
+    float PX;
     float PY;
     float VX;
     float VY;
@@ -11,7 +12,7 @@ class cuerpo
     float AX;
     float AY;
     float G;
-    float R;
+    #define 3.12;
 public:
     cuerpo();
     cuerpo(float PX_,float  PY_,float VX_,float VY_,float m, float R_);

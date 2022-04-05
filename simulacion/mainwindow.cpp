@@ -14,7 +14,6 @@ MainWindow::MainWindow(QWidget *parent)
     timer =new QTimer(this);
 
     escena = new QGraphicsScene(this);
-    escena->setSceneRect(-250,-250,500,500);
     escena->setSceneRect(-altura/2,-ancho/2,altura,ancho);
     ui->graphicsView->setScene(escena);
     ui->centralwidget->adjustSize();
